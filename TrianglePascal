@@ -1,0 +1,35 @@
+#TRIANGLE PASCAL USING ONLY ONE LIST
+#Pascal Triangle Code
+import math
+#columns = up to down
+#rows = left to right
+lines = int(input('введите количество строк: ')) #the number of lines
+for i in range(lines):
+    list1 = []  # for every number
+    column = i
+    for j in range(i+1):
+        row = j
+        formula = int((math.factorial(column)) / ((math.factorial(row)) * (math.factorial(column - row)))) #formula for every number
+        list1.append(formula)
+sentence = ''
+for i in list1: #to find the max length of base
+    sentence = sentence + str(i) + ' '
+maxl = len(sentence)-1 #the max length
+#make loop for n rows
+for k in range(lines):
+    #make list for each row
+    list1 = []
+    column = k
+    for j in range(k+1):
+        row = j
+        formula = int((math.factorial(column)) / ((math.factorial(row)) * (math.factorial(column - row)))) #formula for every number
+        list1.append(formula)
+    #put the space and count the length of one row
+    sentence_i = ''
+    for m in list1:
+        sentence_i = sentence_i + str(m) + ' '
+    length = len(sentence_i)-1 #to know the length of i row
+    k = int((maxl - length)/2) #center formula --> know how many gap we have
+    for j in range (k):
+        print(" ", end="") #fill the gap with space(s)
+    print(*list1) #print triangle
